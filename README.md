@@ -1,8 +1,3 @@
----
-typora-copy-images-to: images
-
----
-
 # Local openBIS Jupyter installation
 
 Andreas Cuny | CSB | ETH  Zurich
@@ -107,7 +102,7 @@ password = getpass.getpass()
 o.login('USERNAME', password)
 ```
 
-![pyBISConnection](images\pyBISConnection.PNG)
+![pyBISConnection](images/pyBISConnection.PNG)
 
 Now you can search openBIS for what ever you have entered. As example we are looking for the FASTA file of a plasmid (FRP320) and are interested in its storage location as well as for which yeast marker it contains. We create a new cell and add the following code. 
 
@@ -116,7 +111,7 @@ plasmid = o.get_sample('/YEAST_LAB/FRP320')
 plasmid.props.all()
 ```
 
-![DemoSample](images\DemoSample.PNG)
+![DemoSample](images/DemoSample.PNG)
 
 _Note: for a detailed description of how to retrieve a sample, register and upload a new sample to openBIS using pyBIS read the [pyBIS documentation](https://sissource.ethz.ch/sispub/openbis/blob/master/pybis/src/python/README.md)_.
 
@@ -126,7 +121,7 @@ To get to the attached file i.e the FASTA file of this plasmid we can type:
 plasmid.get_datasets()
 ```
 
-![SampleDS](images\SampleDS.PNG)
+![SampleDS](images/SampleDS.PNG)
 
 To download the FASTA file we use its permID and specify the download location:
 
@@ -135,7 +130,7 @@ ds = o.get_dataset('20111128151304907-8697')
 ds.download(destination='/local0/scratch/yeast_trafo_project', wait_until_finished=False)
 ```
 
-![DSDownload](C:\Users\localadmin\ownCloud\Projects\OpenBisJupyterIntegration\images\DSDownload.PNG)
+![DSDownload](images/DSDownload.PNG)
 
 Now you could for example import the downloaded FASTA or GB file into your notebook for documentation or to display and modify it.
 
@@ -148,9 +143,9 @@ ax2, _ = circular_rec.plot(figure_width=10)
 ax2.figure.savefig("FRP320_NEW_FIGURE.png", bbox_inches="tight")
 ```
 
-![GBfile](images\GBfile.PNG)
+![GBfile](images/GBfile.PNG)
 
-![GBfileview](images\GBfileview.PNG)
+![GBfileview](images/GBfileview.PNG)
 
 To save the figure created above we create a new dataset of type ANALYZED_DATA and save it (will upload and register it in openBIS).
 
@@ -161,11 +156,11 @@ ds_new = o.new_dataset(type = 'ANALYZED_DATA',
 ds_new.save()
 ```
 
-![SaveNewDataSet](images\SaveNewDataSet.PNG)
+![SaveNewDataSet](images/SaveNewDataSet.PNG)
 
 In the browser, on the right there is now our new figure attached as ANALYZED_DATA dataset as uploaded/saved before.
 
-## ![NewDataSetInELN](images\NewDataSetInELN.png)
+## ![NewDataSetInELN](images/NewDataSetInELN.png)
 
 ## Connection to openBIS using openbis-jupyter-extension
 
@@ -177,15 +172,15 @@ First start a notebook in any language.
 
 Open the connections menu and add the URL to your / an existing openBIS instance you have access to. 
 
-![Connection](images\Connection.png)
+![Connection](images/Connection.png)
 
 Add your user credentials and password and click on create/connect. 
 
-![CreateConnection](images\CreateConnection.PNG)
+![CreateConnection](images/CreateConnection.PNG)
 
 If the connection is successful, the status will turn green.  
 
-![ChooseConnection](images\ChooseConnection.PNG)
+![ChooseConnection](images/ChooseConnection.PNG)
 
 To choose the newly created connection, hit the radio button on the left and click choose connection.
 
@@ -193,39 +188,39 @@ To choose the newly created connection, hit the radio button on the left and cli
 
 Now you are ready to download or upload datasets form openBIS. In the openBIS-ELN copy the permID (i.e. 20190617125718758-357713 )or the experiment identifier (i.e. path listed under Experiment: /CUNYA/YEAST_TRANSFORMATION_OPTIMIZATION/YEAST_TRANSFORMATION_OPTIMIZATION_EXP_3) of the dataset to download (i.e. two Excel files as shown below).
 
-![DataToDownload](images\DataToDownload.PNG)
+![DataToDownload](images/DataToDownload.PNG)
 
 
 
 In an open Jupyter notebook, click on the download icon to open the download dialog. 
 
-![DownloadDS](images\DownloadDS.png)
+![DownloadDS](images/DownloadDS.png)
 
 Add either the permID or the identifier of the datasets you like to download as described above. All the datasets of e.g. an experiment are then listed and you can select the ones to download and specify the location where you want to download the data to. 
 
-![DownloadSelDS](images\DownloadSelDS-1562072159599.PNG)
+![DownloadSelDS](images/DownloadSelDS-1562072159599.PNG)
 
 A green notification is shown at the top of the notebook after the successful download.  
 
-![DownloadedDS](images\DownloadedDS.PNG)
+![DownloadedDS](images/DownloadedDS.PNG)
 
 Now the datasets are ready in a sub folder named with the permID of the dataset. Additionally, the dataset download and its provenance gets tracked by the notebook (in its meta-data) such that it is clear from which openBIS instance which dataset was downloaded from.
 
 The data can now be used i.e. imported in the current notebook and analyzed.
 
-![ExcelTable](images\ExcelTable-1562073242043.PNG)
+![ExcelTable](images/ExcelTable-1562073242043.PNG)
 
-![ExcelAnalysis](images\ExcelAnalysis.PNG)
+![ExcelAnalysis](images/ExcelAnalysis.PNG)
 
 #### Upload
 
 To upload a new or modified dataset, figure, table etc together with the current notebook, hit the upload button. 
 
-![UploadButton](images\UploadButton.png)
+![UploadButton](images/UploadButton.png)
 
 Now you need to select the dataset type of the data to be uploaded, i.e. ANALYZED_DATA and specify the mandatory meta-data. The file browser lets you select which additional file(s) should be included in the upload.
 
-![UploadDialog](images\UploadDialog.PNG)
+![UploadDialog](images/UploadDialog.PNG)
 
 All the downloaded datasets from before, are automatically added as parents to notebook such that the record and the relationship of which 'raw data' was used with this notebook.
 
